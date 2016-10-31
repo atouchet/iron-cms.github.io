@@ -24,6 +24,9 @@ github_username:  mrlsd
 project_repository: iron-cms
 facebook_username: evgeny.ukhanov
 
+# Google Analitics
+google-analytics: "UA-86657406-1"
+
 # Build settings
 markdown: kramdown
 theme: minima
