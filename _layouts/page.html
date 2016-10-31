@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<div class="jumbotron masthead"
+     style="color:#fff; background: rgba(0, 0, 0, 0) linear-gradient(45deg, #020031 0%, #6d3353 100%) repeat scroll 0 0;">
+    <div class="container">
+        <h1 class="display-3">{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+        <!-- <p>Extancible CMS based on Iron Framework.</p> -->
+        <p>{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}</p>
+        {% if page.url == '/' %}
+        <p><a class="btn btn-danger btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        {% endif %}
+    </div>
+</div>
+{{ content }}
