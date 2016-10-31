@@ -18,10 +18,10 @@ email: mrlsd@ya.ru
 description: > # this means to ignore newlines until "baseurl:"
   Iron CMS - Inspired by Rust - flexible, fast, extensible, reliable CMS based on Iron Framework..
 baseurl: "" # the subpath of your site, e.g. /blog
-# url: "https://iron-cms.github.io" # the base hostname & protocol for your site
-url: "http://localhost:4000"
-github_username:  iron-cms
-project_repository: mrlsd
+url: "https://iron-cms.github.io" # the base hostname & protocol for your site
+# url: "http://localhost:4000"
+github_username:  mrlsd
+project_repository: iron-cms
 facebook_username: evgeny.ukhanov
 
 # Build settings
