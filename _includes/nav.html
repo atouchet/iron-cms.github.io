@@ -17,9 +17,11 @@
   {% assign group = 'navigation' %}
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
-                    <a href="{{ site.baseurl }}/">Home</a>
-                </li>
+                {% if page.url == "/" %}
+                <li class="active"><a href="{{ site.baseurl }}/">Home</a></li>
+                {% else %}
+                <li><a href="{{ site.baseurl }}/">Home</a></li>
+                {% endif %}
         {% for node in pages_list %}
             {% if group == null or group == node.group %}
                 {% if page.url == node.url %}
@@ -29,6 +31,7 @@
                 {% endif %}
             {% endif %}
         {% endfor %}
+                <li><a href="{{ site.baseurl }}/doc/iron_cms/">Documentation</a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

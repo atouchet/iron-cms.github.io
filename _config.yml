@@ -30,3 +30,4 @@ google-analytics: "UA-86657406-1"
 # Build settings
 markdown: kramdown
 theme: minima
+highlighter: rouge
