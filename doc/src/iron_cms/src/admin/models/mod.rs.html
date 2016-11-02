@@ -45,10 +45,17 @@
     <section id='main' class="content source"><pre class="line-numbers"><span id="1">1</span>
 <span id="2">2</span>
 <span id="3">3</span>
+<span id="4">4</span>
+<span id="5">5</span>
+<span id="6">6</span>
 </pre><pre class='rust '>
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='kw'>super</span>::{<span class='ident'>Validator</span>, <span class='ident'>ValidateResult</span>, <span class='ident'>ValidateResults</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>Json</span>, <span class='ident'>ToJson</span>, <span class='ident'>decode</span>};
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='kw'>super</span>::{<span class='ident'>Validator</span>, <span class='ident'>ValidateResult</span>, <span class='ident'>ValidateResults</span>, <span class='ident'>BaseDataMap</span>, <span class='ident'>BaseDataMapDecoder</span>};
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>pages</span>;</pre>
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>pages</span>;
+
+<span class='kw'>mod</span> <span class='ident'>pages_test</span>;
+</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

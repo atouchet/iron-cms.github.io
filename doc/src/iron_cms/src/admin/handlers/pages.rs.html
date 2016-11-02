@@ -69,6 +69,9 @@
 <span id="25">25</span>
 <span id="26">26</span>
 <span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>iron</span>::<span class='ident'>prelude</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='kw'>super</span>::<span class='op'>*</span>;
@@ -78,6 +81,7 @@
         <span class='string'>&quot;module&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='string'>&quot;pages&quot;</span>.<span class='ident'>to_json</span>(),
     }
 }
+
 
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_main</span>(_: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Request</span>) <span class='op'>-&gt;</span> <span class='ident'>RenderResult</span> {
     <span class='ident'>Render</span>::<span class='ident'>new</span>(<span class='string'>&quot;admin/pages/index&quot;</span>, <span class='ident'>default_param</span>())
@@ -94,7 +98,9 @@
     <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>err</span>) <span class='op'>=</span> <span class='ident'>validate</span>.<span class='ident'>get_errors</span>() {
         <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Validation Errors: {:?}&quot;</span>, <span class='ident'>err</span>);
     }
-    <span class='ident'>validate</span>.<span class='ident'>get_values</span>();
+    <span class='kw'>let</span> <span class='ident'>model</span> <span class='op'>=</span> <span class='ident'>models</span>::<span class='ident'>pages</span>::<span class='ident'>init</span>(<span class='ident'>validate</span>.<span class='ident'>get_values</span>());
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>model</span>);
+
     <span class='ident'>Render</span>::<span class='ident'>new</span>(<span class='string'>&quot;admin/pages/create&quot;</span>, <span class='ident'>default_param</span>())
 }</pre>
 </section>

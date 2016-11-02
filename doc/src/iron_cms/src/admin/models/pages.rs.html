@@ -62,12 +62,19 @@
 <span id="18">18</span>
 <span id="19">19</span>
 <span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
 </pre><pre class='rust '>
-<span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>ToJson</span>};
+<span class='comment'>//use rustc_serialize::json::{ToJson};</span>
 <span class='kw'>use</span> <span class='ident'>params</span>::{<span class='ident'>Map</span>};
 <span class='kw'>use</span> <span class='kw'>super</span>::<span class='op'>*</span>;
 
-<span class='kw'>struct</span> <span class='ident'>_Pages</span> {
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>RustcDecodable</span>, <span class='ident'>Debug</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Pages</span> {
     <span class='kw'>pub</span> <span class='ident'>title</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>published</span>: <span class='ident'>bool</span>,
 }
@@ -76,12 +83,17 @@
     <span class='ident'>ValidateResults</span>(<span class='macro'>vec</span><span class='macro'>!</span>(
         <span class='ident'>Validator</span>::<span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>::<span class='ident'>new</span>(<span class='macro'>btreemap</span><span class='macro'>!</span> {
             <span class='string'>&quot;requiered&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='bool-val'>true</span>.<span class='ident'>to_json</span>(),
+            <span class='string'>&quot;vtype&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='string'>&quot;string&quot;</span>.<span class='ident'>to_json</span>(),
         }).<span class='ident'>validate</span>(<span class='string'>&quot;title&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>values</span>.<span class='ident'>find</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;title&quot;</span>])),
-
         <span class='ident'>Validator</span>::<span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>::<span class='ident'>new</span>(<span class='macro'>btreemap</span><span class='macro'>!</span> {
             <span class='string'>&quot;default&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='bool-val'>false</span>.<span class='ident'>to_json</span>(),
+            <span class='string'>&quot;vtype&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='string'>&quot;bool&quot;</span>.<span class='ident'>to_json</span>(),
         }).<span class='ident'>validate</span>(<span class='string'>&quot;published&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>values</span>.<span class='ident'>find</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;published&quot;</span>])),
     ))
+}
+
+<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>init</span>(<span class='ident'>values</span>: <span class='ident'>BaseDataMap</span>) <span class='op'>-&gt;</span> <span class='ident'>Pages</span> {
+    <span class='ident'>values</span>.<span class='ident'>decode</span>()
 }
 </pre>
 </section>
