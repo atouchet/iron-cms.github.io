@@ -290,7 +290,31 @@
 <span id="246">246</span>
 <span id="247">247</span>
 <span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
 </pre><pre class='rust '>
+<span class='doccomment'>//! # What is Validator</span>
+<span class='doccomment'>//! It useful for Form and Model validation.</span>
+<span class='doccomment'>//! Implementation for Validation via BTreeMap structure.</span>
+<span class='doccomment'>//! It consist basic validations rule, validatior, and</span>
+<span class='doccomment'>//! validation Result and validation Errors.</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! ## How to use</span>
+<span class='doccomment'>//! Most common examples you can find at src/admin/models/*</span>
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='self'>self</span>, <span class='ident'>Json</span>, <span class='ident'>ToJson</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::<span class='ident'>DecoderError</span>::<span class='op'>*</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>Decodable</span>;
@@ -299,24 +323,30 @@
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>string</span>::<span class='ident'>String</span>;
 
-<span class='doccomment'>/// Base Validator strict</span>
+<span class='doccomment'>/// Base Validator struct</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>RustcDecodable</span>, <span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Validator</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Type of validator</span>
+    <span class='doccomment'>/// For example: string, bool, i64 etc.</span>
     <span class='kw'>pub</span> <span class='ident'>vtype</span>: <span class='ident'>String</span>,
     <span class='kw'>pub</span> <span class='ident'>requiered</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
-    <span class='kw'>pub</span> <span class='ident'>empty</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>min</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>max</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>u32</span><span class='op'>&gt;</span>,
     <span class='kw'>pub</span> <span class='ident'>default</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>,
     <span class='ident'>errors</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>ErrorValidator</span><span class='op'>&gt;</span>,
 }
 
+<span class='doccomment'>/// Validation result enum.</span>
+<span class='doccomment'>/// Consist Values and Errors</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ValidateResult</span>(<span class='ident'>BaseDataMap</span>, <span class='ident'>ErrorValidator</span>);
+<span class='doccomment'>/// Array of Validatopn Results for all validatior</span>
 <span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ValidateResults</span>(<span class='kw'>pub</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ValidateResult</span><span class='op'>&gt;</span>);
+<span class='comment'>// Error result aggregator</span>
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>ErrorsResult</span> <span class='op'>=</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>ErrorValidator</span><span class='op'>&gt;&gt;</span>;
 
+<span class='doccomment'>/// Validation results methods</span>
 <span class='kw'>impl</span> <span class='ident'>ValidateResults</span> {
     <span class='doccomment'>/// Get Validation Errors result</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_errors</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ErrorsResult</span> {
@@ -341,6 +371,8 @@
     }
 }
 
+<span class='doccomment'>/// Validator methods</span>
+<span class='doccomment'>/// It depends from various additional **traits**.</span>
 <span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>FromValue</span> <span class='op'>+</span> <span class='ident'>ToJson</span> <span class='op'>+</span> <span class='ident'>Decodable</span><span class='op'>&gt;</span> <span class='ident'>Validator</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
     <span class='doccomment'>/// Init Validation rule</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>validator_rules</span>: <span class='ident'>BaseDataMap</span>) <span class='op'>-&gt;</span> <span class='ident'>Validator</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {

@@ -60,14 +60,20 @@
 <span id="16">16</span>
 <span id="17">17</span>
 <span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>iron</span>::{<span class='ident'>Request</span>, <span class='ident'>Response</span>, <span class='ident'>IronResult</span>, <span class='ident'>AfterMiddleware</span>};
 <span class='kw'>use</span> <span class='ident'>iron</span>::<span class='ident'>error</span>::{<span class='ident'>IronError</span>};
 <span class='kw'>use</span> <span class='ident'>iron</span>::<span class='ident'>status</span>;
 <span class='kw'>use</span> <span class='ident'>router</span>::{<span class='ident'>NoRoute</span>};
 
+<span class='doccomment'>/// Structure for actions with 404 error</span>
+<span class='doccomment'>/// and other Errors</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Error404</span>;
 
+<span class='doccomment'>/// Methods for Erros middleware</span>
 <span class='kw'>impl</span> <span class='ident'>AfterMiddleware</span> <span class='kw'>for</span> <span class='ident'>Error404</span> {
     <span class='kw'>fn</span> <span class='ident'>catch</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, _: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Request</span>, <span class='ident'>err</span>: <span class='ident'>IronError</span>) <span class='op'>-&gt;</span> <span class='ident'>IronResult</span><span class='op'>&lt;</span><span class='ident'>Response</span><span class='op'>&gt;</span> {
         <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Error middleware: \n{:?}\n&quot;</span>, <span class='ident'>err</span>.<span class='ident'>error</span>);

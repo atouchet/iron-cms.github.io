@@ -192,6 +192,16 @@
 <span id="148">148</span>
 <span id="149">149</span>
 <span id="150">150</span>
+<span id="151">151</span>
+<span id="152">152</span>
+<span id="153">153</span>
+<span id="154">154</span>
+<span id="155">155</span>
+<span id="156">156</span>
+<span id="157">157</span>
+<span id="158">158</span>
+<span id="159">159</span>
+<span id="160">160</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
 <span class='doccomment'>/// # Render engine middlware</span>
@@ -233,6 +243,11 @@
     <span class='kw'>fn</span> <span class='ident'>decode</span><span class='op'>&lt;</span><span class='ident'>J</span>: <span class='ident'>Decodable</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>J</span>;
 }
 
+<span class='doccomment'>/// Omplementation for Jscond decoding</span>
+<span class='doccomment'>/// from BaseDataMap that implemented Decodable trait</span>
+<span class='doccomment'>/// to specific generic type.</span>
+<span class='doccomment'>/// It useful for struct init via BaseDataMap data.</span>
+<span class='doccomment'>/// For Example - models.</span>
 <span class='kw'>impl</span> <span class='ident'>BaseDataMapDecoder</span> <span class='kw'>for</span> <span class='ident'>BaseDataMap</span> {
     <span class='doccomment'>/// Json decoder for BaseDataMap</span>
     <span class='kw'>fn</span> <span class='ident'>decode</span><span class='op'>&lt;</span><span class='ident'>J</span>: <span class='ident'>Decodable</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>J</span> {
@@ -260,7 +275,8 @@
 <span class='doccomment'>/// basic usage:</span>
 <span class='doccomment'>/// `Render::new(&quot;my/template/path&quot;, ())``</span>
 <span class='kw'>impl</span> <span class='ident'>Render</span> {
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>ToJson</span><span class='op'>&gt;</span>(<span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>data</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>IronResult</span><span class='op'>&lt;</span><span class='ident'>Response</span><span class='op'>&gt;</span> {
+    <span class='doccomment'>/// Render Template file with status 200</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>ToJson</span><span class='op'>&gt;</span>(<span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>data</span>: <span class='ident'>T</span>) <span class='op'>-&gt;</span> <span class='ident'>RenderResult</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>resp</span> <span class='op'>=</span> <span class='ident'>Response</span>::<span class='ident'>new</span>();
         <span class='ident'>resp</span>.<span class='ident'>set_mut</span>(<span class='ident'>Template</span>::<span class='ident'>new</span>(<span class='ident'>name</span>, <span class='ident'>data</span>)).<span class='ident'>set_mut</span>(<span class='ident'>status</span>::<span class='prelude-val'>Ok</span>);
         <span class='prelude-val'>Ok</span>(<span class='ident'>resp</span>)
@@ -276,7 +292,7 @@
     <span class='comment'>// Add helpers to Handlebars</span>
     <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;link&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>link_helper</span>));
     <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;script&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>script_helper</span>));
-    <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;active&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>active_page</span>));
+    <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;active&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>active_page_helper</span>));
 
     <span class='comment'>// Our instance HandlebarsEngine depended of Handlebars</span>
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>template</span> <span class='op'>=</span> <span class='ident'>HandlebarsEngine</span>::<span class='ident'>from</span>(<span class='ident'>hregistry</span>);
@@ -329,7 +345,11 @@
     <span class='prelude-val'>Ok</span>(())
 }
 
-<span class='kw'>fn</span> <span class='ident'>active_page</span>(_: <span class='kw-2'>&amp;</span><span class='ident'>Context</span>, <span class='ident'>h</span>: <span class='kw-2'>&amp;</span><span class='ident'>Helper</span>, _: <span class='kw-2'>&amp;</span><span class='ident'>Handlebars</span>, <span class='ident'>rc</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>RenderContext</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>RenderError</span><span class='op'>&gt;</span> {
+<span class='doccomment'>/// Active helper.</span>
+<span class='doccomment'>/// It checking is value same with exacted value</span>
+<span class='doccomment'>/// usege: `{{#active &quot;pages&quot; module }}{{/active}}`</span>
+<span class='doccomment'>/// It should pre-init value at Handler!</span>
+<span class='kw'>fn</span> <span class='ident'>active_page_helper</span>(_: <span class='kw-2'>&amp;</span><span class='ident'>Context</span>, <span class='ident'>h</span>: <span class='kw-2'>&amp;</span><span class='ident'>Helper</span>, _: <span class='kw-2'>&amp;</span><span class='ident'>Handlebars</span>, <span class='ident'>rc</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>RenderContext</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>RenderError</span><span class='op'>&gt;</span> {
     <span class='kw'>let</span> <span class='ident'>exact_page</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>0</span>)
             .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='ident'>v</span>.<span class='ident'>value</span>().<span class='ident'>as_string</span>())
             .<span class='ident'>ok_or</span>(<span class='ident'>RenderError</span>::<span class='ident'>new</span>(<span class='string'>&quot;|&gt; active_page - param 1 with string type is required&quot;</span>)));

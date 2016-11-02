@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `iron_cms` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, iron_cms">
+    <meta name="description" content="API documentation for the Rust `BaseDataMapDecoder` trait in crate `iron_cms`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, BaseDataMapDecoder">
 
-    <title>iron_cms - Rust</title>
+    <title>iron_cms::middleware::BaseDataMapDecoder - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
-    <link rel="stylesheet" type="text/css" href="../main.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
     
 
     
@@ -28,7 +28,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'iron_cms', ty: 'mod', relpath: '../'};</script>
+        <p class='location'><a href='../index.html'>iron_cms</a>::<wbr><a href='index.html'>middleware</a></p><script>window.sidebarCurrent = {name: 'BaseDataMapDecoder', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -42,38 +42,25 @@
         </form>
     </nav>
 
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>iron_cms</a></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content trait">
+<h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>iron_cms</a>::<wbr><a href='index.html'>middleware</a>::<wbr><a class='trait' href=''>BaseDataMapDecoder</a></span><span class='out-of-band'><span id='render-detail'>
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-0' class='srclink' href='../src/iron_cms/src/lib.rs.html#1-73' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'>
-<h1 id='iron-cms' class='section-header'><a href='#iron-cms'>Iron CMS</a></h1>
-<p>CMS based on Iron Framework for <strong>Rust</strong>.
-```</p>
-
-<h1 id='macro_use' class='section-header'><a href='#macro_use'>[macro_use]</a></h1>
-<p>extern crate maplit;
-```</p>
-</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class='mod' href='middleware/index.html'
-                                  title='iron_cms::middleware'>middleware</a></td>
-                           <td class='docblock short'>
-                                <p>Base middleware for CMS</p>
-                           </td>
-                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class='fn' href='fn.routes.html'
-                                  title='iron_cms::routes'>routes</a></td>
-                           <td class='docblock short'>
-                                <p>Routes aggregator.
-It accumulate all posible routes for CMS.</p>
-                           </td>
-                       </tr></table></section>
+               </span><a id='src-46' class='srclink' href='../../src/iron_cms/src/middleware/render.rs.html#37-39' title='goto source code'>[src]</a></span></h1>
+<pre class='rust trait'>pub trait BaseDataMapDecoder {
+    fn <a href='#tymethod.decode' class='fnname'>decode</a>&lt;J:&nbsp;<a class='trait' href='../../iron_cms/middleware/trait.Decodable.html' title='iron_cms::middleware::Decodable'>Decodable</a>&gt;(&amp;self) -&gt; J;
+}</pre><div class='docblock'><p>BaseDataMap Json decoder trait</p>
+</div>
+            <h2 id='required-methods'>Required Methods</h2>
+            <div class='methods'>
+        <h3 id='tymethod.decode' class='method stab '><code>fn <a href='#tymethod.decode' class='fnname'>decode</a>&lt;J:&nbsp;<a class='trait' href='../../iron_cms/middleware/trait.Decodable.html' title='iron_cms::middleware::Decodable'>Decodable</a>&gt;(&amp;self) -&gt; J</code></h3></div>
+        <h2 id='implementors'>Implementors</h2>
+        <ul class='item-list' id='implementors-list'>
+    <li><code>impl BaseDataMapDecoder for <a class='type' href='../../iron_cms/middleware/type.BaseDataMap.html' title='iron_cms::middleware::BaseDataMap'>BaseDataMap</a></code></li>
+</ul><script type="text/javascript" async
+                         src="../../implementors/iron_cms/middleware/trait.BaseDataMapDecoder.js">
+                 </script></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -127,13 +114,13 @@ It accumulate all posible routes for CMS.</p>
     
 
     <script>
-        window.rootPath = "../";
+        window.rootPath = "../../";
         window.currentCrate = "iron_cms";
         window.playgroundUrl = "";
     </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
     
-    <script defer src="../search-index.js"></script>
+    <script defer src="../../search-index.js"></script>
 </body>
 </html>
