@@ -111,29 +111,24 @@
 <span id="67">67</span>
 <span id="68">68</span>
 <span id="69">69</span>
-<span id="70">70</span>
-<span id="71">71</span>
-<span id="72">72</span>
-<span id="73">73</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! # Iron CMS</span>
 <span class='doccomment'>//! CMS based on Iron Framework for **Rust**.</span>
-<span class='doccomment'>//! ```</span>
-<span class='doccomment'>//! #[macro_use]</span>
-<span class='doccomment'>//! extern crate maplit;</span>
-<span class='doccomment'>//! ```</span>
-<span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>iron</span>;
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>router</span>;
+<span class='attribute'>#[<span class='ident'>macro_use</span>]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>iron</span>;
+<span class='attribute'>#[<span class='ident'>macro_use</span>]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>router</span>;
+<span class='attribute'>#[<span class='ident'>macro_use</span>]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>maplit</span>;
+<span class='attribute'>#[<span class='ident'>macro_use</span>]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>diesel</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>handlebars_iron</span> <span class='kw'>as</span> <span class='ident'>hbs</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>handlebars</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>rustc_serialize</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>staticfile</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>mount</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>time</span>;
-<span class='attribute'>#[<span class='ident'>macro_use</span>]</span>
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>maplit</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>params</span>;
+
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>iron_diesel_middleware</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>r2d2</span>;
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>r2d2_diesel</span>;
 
 <span class='doccomment'>/// Base middleware for CMS</span>
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>middleware</span>;
@@ -180,13 +175,10 @@
 
     <span class='comment'>// Add static router</span>
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>mount</span> <span class='op'>=</span> <span class='ident'>Mount</span>::<span class='ident'>new</span>();
-<span class='comment'>//    mount</span>
-<span class='comment'>//        .mount(&quot;/&quot;, routes)</span>
-<span class='comment'>//        .mount(&quot;/assets/&quot;, Static::new(Path::new(&quot;static&quot;))</span>
-<span class='comment'>//            .cache(Duration::days(30)));</span>
     <span class='ident'>mount</span>
         .<span class='ident'>mount</span>(<span class='string'>&quot;/&quot;</span>, <span class='ident'>routes</span>)
         .<span class='ident'>mount</span>(<span class='string'>&quot;/assets/&quot;</span>, <span class='ident'>Static</span>::<span class='ident'>new</span>(<span class='ident'>Path</span>::<span class='ident'>new</span>(<span class='string'>&quot;static&quot;</span>)));
+<span class='comment'>//      .cache(Duration::days(30)));</span>
     <span class='ident'>mount</span>
 }
 </pre>

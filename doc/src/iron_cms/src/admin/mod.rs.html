@@ -57,6 +57,7 @@
 <span id="13">13</span>
 <span id="14">14</span>
 <span id="15">15</span>
+<span id="16">16</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>router</span>::<span class='ident'>Router</span>;
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>middleware</span>::<span class='op'>*</span>;
@@ -69,6 +70,7 @@
     <span class='ident'>routes</span>.<span class='ident'>get</span>(<span class='string'>&quot;/admin/pages.html&quot;</span>, <span class='ident'>handlers</span>::<span class='ident'>pages</span>::<span class='ident'>get_main</span>, <span class='string'>&quot;admin_pages_main&quot;</span>);
     <span class='ident'>routes</span>.<span class='ident'>get</span>(<span class='string'>&quot;/admin/pages/create.html&quot;</span>, <span class='ident'>handlers</span>::<span class='ident'>pages</span>::<span class='ident'>get_create</span>, <span class='string'>&quot;admin_pages_create&quot;</span>);
     <span class='ident'>routes</span>.<span class='ident'>get</span>(<span class='string'>&quot;/admin/login.html&quot;</span>, <span class='ident'>handlers</span>::<span class='ident'>login</span>::<span class='ident'>get_main</span>, <span class='string'>&quot;admin_login&quot;</span>);
+    <span class='ident'>routes</span>.<span class='ident'>get</span>(<span class='string'>&quot;/admin/pages/show&quot;</span>, <span class='ident'>handlers</span>::<span class='ident'>pages</span>::<span class='ident'>get_show</span>, <span class='string'>&quot;admin_pages_show&quot;</span>);
 
     <span class='ident'>routes</span>.<span class='ident'>post</span>(<span class='string'>&quot;/admin/pages/create.html&quot;</span>, <span class='ident'>handlers</span>::<span class='ident'>pages</span>::<span class='ident'>post_create</span>, <span class='string'>&quot;admin_pages_create&quot;</span>);
     <span class='ident'>routes</span>

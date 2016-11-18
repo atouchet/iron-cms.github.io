@@ -47,7 +47,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-5142' class='srclink' href='https://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/index.html?gotosrc=5142' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-5134' class='srclink' href='https://doc.rust-lang.org/rustc-serialize/rustc_serialize/json/index.html?gotosrc=5134' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>JSON parsing and serialization</p>
 
 <h1 id='what-is-json' class='section-header'><a href='#what-is-json'>What is JSON?</a></h1>
@@ -91,7 +91,7 @@ their age, address and phone numbers could look like</p>
         <span class='string'>&quot;+44 1234567&quot;</span>,
         <span class='string'>&quot;+44 2345678&quot;</span>
     ]
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h1 id='rust-type-based-encoding-and-decoding' class='section-header'><a href='#rust-type-based-encoding-and-decoding'>Rust Type-based Encoding and Decoding</a></h1>
 <p>Rust provides a mechanism for low boilerplate encoding &amp; decoding of values
@@ -141,7 +141,7 @@ from JSON using the serialization API, using the derived serialization code.</p>
 
     <span class='comment'>// Deserialize using `json::decode`</span>
     <span class='kw'>let</span> <span class='ident'>decoded</span>: <span class='ident'>TestStruct</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>encoded</span>).<span class='ident'>unwrap</span>();
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h2 id='using-the-tojson-trait' class='section-header'><a href='#using-the-tojson-trait'>Using the <code>ToJson</code> trait</a></h2>
 <p>The examples below use the <code>ToJson</code> trait to generate the JSON string,
@@ -182,7 +182,7 @@ which is required for custom mappings.</p>
     }).<span class='ident'>unwrap</span>();
     <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;data: {}&quot;</span>, <span class='ident'>data</span>);
     <span class='comment'>// data: {&quot;uid&quot;:1,&quot;dsc&quot;:&quot;test&quot;,&quot;val&quot;:&quot;0.0001+12.539i&quot;};</span>
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h3 id='verbose-example-of-tojson-usage' class='section-header'><a href='#verbose-example-of-tojson-usage'>Verbose example of <code>ToJson</code> usage</a></h3>
 <pre class='rust rust-example-rendered'>
@@ -222,7 +222,7 @@ which is required for custom mappings.</p>
 
     <span class='comment'>// Deserialize like before</span>
     <span class='kw'>let</span> <span class='ident'>decoded</span>: <span class='ident'>TestStruct</span> <span class='op'>=</span> <span class='ident'>json</span>::<span class='ident'>decode</span>(<span class='kw-2'>&amp;</span><span class='ident'>json_str</span>).<span class='ident'>unwrap</span>();
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h2 id='parsing-a-str-to-json-and-reading-the-result' class='section-header'><a href='#parsing-a-str-to-json-and-reading-the-result'>Parsing a <code>str</code> to <code>Json</code> and reading the result</a></h2>
 <pre class='rust rust-example-rendered'>
@@ -253,7 +253,7 @@ which is required for custom mappings.</p>
     }
     <span class='comment'>// bar: baz (string)</span>
     <span class='comment'>// foo: 13 (u64)</span>
-}</pre>
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
 
 <h1 id='the-status-of-this-library' class='section-header'><a href='#the-status-of-this-library'>The status of this library</a></h1>
 <p>While this library is the standard way of working with JSON in Rust,
@@ -266,42 +266,42 @@ evaluating Rust JSON performance.</p>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.AsJson.html'
                                   title='iron_cms::middleware::json::AsJson'>AsJson</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.AsPrettyJson.html'
                                   title='iron_cms::middleware::json::AsPrettyJson'>AsPrettyJson</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Builder.html'
                                   title='iron_cms::middleware::json::Builder'>Builder</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A Builder consumes a json::Parser to create a generic Json structure.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Decoder.html'
                                   title='iron_cms::middleware::json::Decoder'>Decoder</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A structure to decode JSON to values in rust.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Encoder.html'
                                   title='iron_cms::middleware::json::Encoder'>Encoder</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A structure for implementing serialization to JSON.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Parser.html'
                                   title='iron_cms::middleware::json::Parser'>Parser</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A streaming JSON parser implemented as an iterator of JsonEvent, consuming
 an iterator of char.</p>
                            </td>
@@ -309,14 +309,14 @@ an iterator of char.</p>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.PrettyJson.html'
                                   title='iron_cms::middleware::json::PrettyJson'>PrettyJson</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Stack.html'
                                   title='iron_cms::middleware::json::Stack'>Stack</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A Stack represents the current position of the parser in the logical
 structure of the JSON stream.
 For example foo.bar[3].x</p>
@@ -326,49 +326,49 @@ For example foo.bar[3].x</p>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.DecoderError.html'
                                   title='iron_cms::middleware::json::DecoderError'>DecoderError</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.EncoderError.html'
                                   title='iron_cms::middleware::json::EncoderError'>EncoderError</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.ErrorCode.html'
                                   title='iron_cms::middleware::json::ErrorCode'>ErrorCode</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>The errors that can arise while parsing a JSON stream.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.Json.html'
                                   title='iron_cms::middleware::json::Json'>Json</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Represents a json value</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.JsonEvent.html'
                                   title='iron_cms::middleware::json::JsonEvent'>JsonEvent</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>The output of the streaming parser.</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.ParserError.html'
                                   title='iron_cms::middleware::json::ParserError'>ParserError</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.StackElement.html'
                                   title='iron_cms::middleware::json::StackElement'>StackElement</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>StackElements compose a Stack.
 For example, Key(&quot;foo&quot;), Key(&quot;bar&quot;), Index(3) and Key(&quot;x&quot;) are the
 StackElements compositing the stack that represents foo.bar[3].x</p>
@@ -378,7 +378,7 @@ StackElements compositing the stack that represents foo.bar[3].x</p>
                        <tr class=' module-item'>
                            <td><a class='trait' href='trait.ToJson.html'
                                   title='iron_cms::middleware::json::ToJson'>ToJson</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A trait for converting values to JSON</p>
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
@@ -386,7 +386,7 @@ StackElements compositing the stack that represents foo.bar[3].x</p>
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.as_json.html'
                                   title='iron_cms::middleware::json::as_json'>as_json</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Create an <code>AsJson</code> wrapper which can be used to print a value as JSON
 on-the-fly via <code>write!</code></p>
                            </td>
@@ -394,7 +394,7 @@ on-the-fly via <code>write!</code></p>
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.as_pretty_json.html'
                                   title='iron_cms::middleware::json::as_pretty_json'>as_pretty_json</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Create an <code>AsPrettyJson</code> wrapper which can be used to print a value as JSON
 on-the-fly via <code>write!</code></p>
                            </td>
@@ -402,21 +402,21 @@ on-the-fly via <code>write!</code></p>
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.decode.html'
                                   title='iron_cms::middleware::json::decode'>decode</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Shortcut function to decode a JSON <code>&amp;str</code> into an object</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.encode.html'
                                   title='iron_cms::middleware::json::encode'>encode</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Shortcut function to encode a <code>T</code> into a JSON <code>String</code></p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='fn' href='fn.error_str.html'
                                   title='iron_cms::middleware::json::error_str'>error_str</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Returns a readable error string for a given error code.</p>
                            </td>
                        </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
@@ -424,35 +424,35 @@ on-the-fly via <code>write!</code></p>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.Array.html'
                                   title='iron_cms::middleware::json::Array'>Array</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.BuilderError.html'
                                   title='iron_cms::middleware::json::BuilderError'>BuilderError</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.DecodeResult.html'
                                   title='iron_cms::middleware::json::DecodeResult'>DecodeResult</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.EncodeResult.html'
                                   title='iron_cms::middleware::json::EncodeResult'>EncodeResult</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.Object.html'
                                   title='iron_cms::middleware::json::Object'>Object</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr></table></section>

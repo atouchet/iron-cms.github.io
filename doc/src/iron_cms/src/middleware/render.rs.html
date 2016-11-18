@@ -202,6 +202,48 @@
 <span id="158">158</span>
 <span id="159">159</span>
 <span id="160">160</span>
+<span id="161">161</span>
+<span id="162">162</span>
+<span id="163">163</span>
+<span id="164">164</span>
+<span id="165">165</span>
+<span id="166">166</span>
+<span id="167">167</span>
+<span id="168">168</span>
+<span id="169">169</span>
+<span id="170">170</span>
+<span id="171">171</span>
+<span id="172">172</span>
+<span id="173">173</span>
+<span id="174">174</span>
+<span id="175">175</span>
+<span id="176">176</span>
+<span id="177">177</span>
+<span id="178">178</span>
+<span id="179">179</span>
+<span id="180">180</span>
+<span id="181">181</span>
+<span id="182">182</span>
+<span id="183">183</span>
+<span id="184">184</span>
+<span id="185">185</span>
+<span id="186">186</span>
+<span id="187">187</span>
+<span id="188">188</span>
+<span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
+<span id="200">200</span>
+<span id="201">201</span>
+<span id="202">202</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
 <span class='doccomment'>/// # Render engine middlware</span>
@@ -228,6 +270,7 @@
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::<span class='ident'>DecoderError</span>::<span class='op'>*</span>;
 <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>Decodable</span>;
 <span class='kw'>use</span> <span class='ident'>hbs</span>::{<span class='ident'>Template</span>};
+<span class='kw'>use</span> <span class='ident'>handlebars</span>::<span class='ident'>Renderable</span>;
 
 <span class='doccomment'>/// Alias for Basic Data struct</span>
 <span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>BaseDataMap</span> <span class='op'>=</span> <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>Json</span><span class='op'>&gt;</span>;
@@ -293,6 +336,8 @@
     <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;link&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>link_helper</span>));
     <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;script&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>script_helper</span>));
     <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;active&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>active_page_helper</span>));
+    <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;ifeq&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>ifeq_helper</span>));
+    <span class='ident'>hregistry</span>.<span class='ident'>register_helper</span>(<span class='string'>&quot;ifgt&quot;</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>ifgt_helper</span>));
 
     <span class='comment'>// Our instance HandlebarsEngine depended of Handlebars</span>
     <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>template</span> <span class='op'>=</span> <span class='ident'>HandlebarsEngine</span>::<span class='ident'>from</span>(<span class='ident'>hregistry</span>);
@@ -350,6 +395,7 @@
 <span class='doccomment'>/// usege: `{{#active &quot;pages&quot; module }}{{/active}}`</span>
 <span class='doccomment'>/// It should pre-init value at Handler!</span>
 <span class='kw'>fn</span> <span class='ident'>active_page_helper</span>(_: <span class='kw-2'>&amp;</span><span class='ident'>Context</span>, <span class='ident'>h</span>: <span class='kw-2'>&amp;</span><span class='ident'>Helper</span>, _: <span class='kw-2'>&amp;</span><span class='ident'>Handlebars</span>, <span class='ident'>rc</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>RenderContext</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>RenderError</span><span class='op'>&gt;</span> {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;ACTIVE=&gt; {:?} {:?}\n&quot;</span>, <span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>0</span>), <span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>1</span>));
     <span class='kw'>let</span> <span class='ident'>exact_page</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>0</span>)
             .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='ident'>v</span>.<span class='ident'>value</span>().<span class='ident'>as_string</span>())
             .<span class='ident'>ok_or</span>(<span class='ident'>RenderError</span>::<span class='ident'>new</span>(<span class='string'>&quot;|&gt; active_page - param 1 with string type is required&quot;</span>)));
@@ -363,7 +409,44 @@
     <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>rc</span>.<span class='ident'>writer</span>.<span class='ident'>write</span>(<span class='ident'>active</span>.<span class='ident'>into_bytes</span>().<span class='ident'>as_ref</span>()));
     <span class='prelude-val'>Ok</span>(())
 }
-</pre>
+
+<span class='kw'>fn</span> <span class='ident'>ifeq_helper</span>(<span class='ident'>ctx</span>: <span class='kw-2'>&amp;</span><span class='ident'>Context</span>, <span class='ident'>h</span>: <span class='kw-2'>&amp;</span><span class='ident'>Helper</span>, <span class='ident'>hbs</span>: <span class='kw-2'>&amp;</span><span class='ident'>Handlebars</span>, <span class='ident'>rc</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>RenderContext</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>RenderError</span><span class='op'>&gt;</span> {
+    <span class='kw'>let</span> <span class='ident'>value</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>0</span>)
+            .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='prelude-val'>Some</span>(<span class='ident'>v</span>.<span class='ident'>value</span>()) )
+            .<span class='ident'>ok_or</span>(<span class='ident'>RenderError</span>::<span class='ident'>new</span>(<span class='string'>&quot;|&gt; ifeq_helper - param 1 with is required&quot;</span>)));
+    <span class='kw'>let</span> <span class='ident'>eq_field</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>1</span>)
+            .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='prelude-val'>Some</span>(<span class='ident'>v</span>.<span class='ident'>value</span>()) )
+            .<span class='ident'>ok_or</span>(<span class='ident'>RenderError</span>::<span class='ident'>new</span>(<span class='string'>&quot;|&gt; ifeq_helper - param 2 with is required&quot;</span>)));
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;==&gt; {:?}\n\n&quot;</span>, <span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>0</span>));
+
+    <span class='kw'>let</span> <span class='ident'>is_true</span> <span class='op'>=</span> <span class='ident'>value</span> <span class='op'>==</span> <span class='ident'>eq_field</span>;
+
+    <span class='kw'>if</span> <span class='ident'>is_true</span> {
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>tpl</span>) <span class='op'>=</span> <span class='ident'>h</span>.<span class='ident'>template</span>() {
+            <span class='ident'>tpl</span>.<span class='ident'>render</span>(<span class='ident'>ctx</span>, <span class='ident'>hbs</span>, <span class='ident'>rc</span>)?;
+        }
+    } <span class='kw'>else</span> {
+        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>tpl</span>) <span class='op'>=</span> <span class='ident'>h</span>.<span class='ident'>inverse</span>() {
+            <span class='ident'>tpl</span>.<span class='ident'>render</span>(<span class='ident'>ctx</span>, <span class='ident'>hbs</span>, <span class='ident'>rc</span>)?;
+        }
+    }
+    <span class='prelude-val'>Ok</span>(())
+}
+
+<span class='kw'>fn</span> <span class='ident'>ifgt_helper</span>(<span class='ident'>ctx</span>: <span class='kw-2'>&amp;</span><span class='ident'>Context</span>, <span class='ident'>h</span>: <span class='kw-2'>&amp;</span><span class='ident'>Helper</span>, <span class='ident'>hbs</span>: <span class='kw-2'>&amp;</span><span class='ident'>Handlebars</span>, <span class='ident'>rc</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>RenderContext</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>RenderError</span><span class='op'>&gt;</span> {
+    <span class='kw'>let</span> <span class='ident'>value</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>0</span>)
+            .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='prelude-val'>Some</span>(<span class='ident'>v</span>.<span class='ident'>value</span>()) )
+             .<span class='ident'>ok_or</span>(<span class='ident'>RenderError</span>::<span class='ident'>new</span>(<span class='string'>&quot;|&gt; ifgt_helper - param 1 withis required&quot;</span>)));
+    <span class='kw'>let</span> <span class='ident'>eq_field</span> <span class='op'>=</span> <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>h</span>.<span class='ident'>param</span>(<span class='number'>1</span>)
+            .<span class='ident'>and_then</span>(<span class='op'>|</span><span class='ident'>v</span><span class='op'>|</span> <span class='prelude-val'>Some</span>(<span class='ident'>v</span>.<span class='ident'>value</span>()) )
+            .<span class='ident'>ok_or</span>(<span class='ident'>RenderError</span>::<span class='ident'>new</span>(<span class='string'>&quot;|&gt; ifgt_helper - param 2 with is required&quot;</span>)));
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;IFGT==&gt; {:?}\n\n&quot;</span>, <span class='ident'>value</span>);
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>active</span> <span class='op'>=</span> <span class='string'>&quot;5 23&quot;</span>.<span class='ident'>to_owned</span>();
+    <span class='macro'>try</span><span class='macro'>!</span>(<span class='ident'>rc</span>.<span class='ident'>writer</span>.<span class='ident'>write</span>(<span class='ident'>active</span>.<span class='ident'>into_bytes</span>().<span class='ident'>as_ref</span>()));
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;IFGT==&gt;&gt;&gt; {:?}\n\n&quot;</span>, <span class='ident'>value</span>);
+
+    <span class='prelude-val'>Ok</span>(())
+}</pre>
 </section>
     <section id='search' class="content hidden"></section>
 

@@ -49,10 +49,12 @@
 <span id="5">5</span>
 <span id="6">6</span>
 <span id="7">7</span>
+<span id="8">8</span>
 </pre><pre class='rust '>
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>rustc_serialize</span>::<span class='ident'>json</span>::{<span class='ident'>ToJson</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='kw'>super</span>::{<span class='ident'>Render</span>, <span class='ident'>BaseDataMap</span>, <span class='ident'>RenderResult</span>};
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='kw'>super</span>::<span class='ident'>models</span>;
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>iron_diesel_middleware</span>::<span class='ident'>DieselReqExt</span>;
 
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>main</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>pages</span>;

@@ -165,19 +165,19 @@
     <span class='kw'>fn</span> <span class='ident'>validate_title_test</span>() {
         <span class='comment'>// Test valid result</span>
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test Title&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test Title&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
         <span class='comment'>// test unvalid result</span>
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_some</span>());
 
         <span class='comment'>// test unvalid result</span>
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;  &quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;  &quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_some</span>());
     }
@@ -186,49 +186,49 @@
     <span class='kw'>fn</span> <span class='ident'>validate_published_test</span>() {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
         <span class='comment'>// Should setrequired field</span>
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>Boolean</span>(<span class='bool-val'>true</span>)).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;on&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;off&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>I64</span>(<span class='number'>1</span>)).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>I64</span>(<span class='number'>0</span>)).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_some</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>I64</span>(<span class='op'>-</span><span class='number'>1</span>)).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_some</span>());
 
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;published&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>I64</span>(<span class='number'>2</span>)).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_some</span>());
@@ -238,7 +238,7 @@
     <span class='kw'>fn</span> <span class='ident'>validate_published_default_test</span>() {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
         <span class='comment'>// Should setrequired field</span>
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>String</span>(<span class='string'>&quot;Test&quot;</span>.<span class='ident'>into</span>())).<span class='ident'>unwrap</span>();
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>validate</span>(<span class='kw-2'>&amp;</span><span class='ident'>map</span>);
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());
 
@@ -250,15 +250,15 @@
     <span class='attribute'>#[<span class='ident'>should_panic</span>]</span>
     <span class='kw'>fn</span> <span class='ident'>wrong_type_test</span>() {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>map</span> <span class='op'>=</span> <span class='ident'>Map</span>::<span class='ident'>new</span>();
-        <span class='comment'>//map.assign(&quot;title&quot;, Value::String(&quot;Test Title&quot;.into())).unwrap();</span>
-        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;title&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>Boolean</span>(<span class='bool-val'>true</span>)).<span class='ident'>unwrap</span>();
+        <span class='comment'>//map.assign(&quot;pages[title]&quot;, Value::String(&quot;Test Title&quot;.into())).unwrap();</span>
+        <span class='ident'>map</span>.<span class='ident'>assign</span>(<span class='string'>&quot;pages[title]&quot;</span>, <span class='ident'>Value</span>::<span class='ident'>Boolean</span>(<span class='bool-val'>true</span>)).<span class='ident'>unwrap</span>();
 
         <span class='comment'>// Weong type declaration</span>
         <span class='kw'>let</span> <span class='ident'>validator</span> <span class='op'>=</span> <span class='ident'>ValidateResults</span>(<span class='macro'>vec</span><span class='macro'>!</span>(
             <span class='ident'>Validator</span>::<span class='op'>&lt;</span><span class='ident'>bool</span><span class='op'>&gt;</span>::<span class='ident'>new</span>(<span class='macro'>btreemap</span><span class='macro'>!</span> {
                 <span class='string'>&quot;requiered&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='bool-val'>true</span>.<span class='ident'>to_json</span>(),
                 <span class='string'>&quot;vtype&quot;</span>.<span class='ident'>to_string</span>() <span class='op'>=&gt;</span> <span class='string'>&quot;bool&quot;</span>.<span class='ident'>to_json</span>(),
-            }).<span class='ident'>validate</span>(<span class='string'>&quot;title&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>map</span>.<span class='ident'>find</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;title&quot;</span>])),
+            }).<span class='ident'>validate</span>(<span class='string'>&quot;title&quot;</span>.<span class='ident'>to_string</span>(), <span class='ident'>map</span>.<span class='ident'>find</span>(<span class='kw-2'>&amp;</span>[<span class='string'>&quot;pages&quot;</span>, <span class='string'>&quot;title&quot;</span>])),
         ));
         <span class='comment'>// Should paniced</span>
         <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>validator</span>.<span class='ident'>get_errors</span>().<span class='ident'>is_none</span>());

@@ -47,7 +47,7 @@
                    <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                        [<span class='inner'>&#x2212;</span>]
                    </a>
-               </span><a id='src-14' class='srclink' href='../../src/iron_cms/src/middleware/mod.rs.html#1-6' title='goto source code'>[src]</a></span></h1>
+               </span><a id='src-18' class='srclink' href='../../src/iron_cms/src/middleware/mod.rs.html#1-8' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>Base middleware for CMS</p>
 </div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
 <table><tr><td><code>pub use rustc_serialize::json::<a class='enum' href='../../iron_cms/middleware/json/enum.DecoderError.html' title='iron_cms::middleware::json::DecoderError'>DecoderError</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
@@ -55,7 +55,7 @@
                        <tr class=' module-item'>
                            <td><a class='mod' href='json/index.html'
                                   title='iron_cms::middleware::json'>json</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>JSON parsing and serialization</p>
                            </td>
                        </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
@@ -63,7 +63,7 @@
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Error404.html'
                                   title='iron_cms::middleware::Error404'>Error404</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Structure for actions with 404 error
 and other Errors</p>
                            </td>
@@ -71,21 +71,21 @@ and other Errors</p>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.ErrorValidator.html'
                                   title='iron_cms::middleware::ErrorValidator'>ErrorValidator</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Validator Errors</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Render.html'
                                   title='iron_cms::middleware::Render'>Render</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Templфte Render strшct</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.ValidateResult.html'
                                   title='iron_cms::middleware::ValidateResult'>ValidateResult</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Validation result enum.
 Consist Values and Errors</p>
                            </td>
@@ -93,14 +93,14 @@ Consist Values and Errors</p>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.ValidateResults.html'
                                   title='iron_cms::middleware::ValidateResults'>ValidateResults</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Array of Validatopn Results for all validatior</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='struct' href='struct.Validator.html'
                                   title='iron_cms::middleware::Validator'>Validator</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Base Validator struct</p>
                            </td>
                        </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
@@ -108,7 +108,7 @@ Consist Values and Errors</p>
                        <tr class=' module-item'>
                            <td><a class='enum' href='enum.Json.html'
                                   title='iron_cms::middleware::Json'>Json</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Represents a json value</p>
                            </td>
                        </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
@@ -116,29 +116,36 @@ Consist Values and Errors</p>
                        <tr class=' module-item'>
                            <td><a class='trait' href='trait.BaseDataMapDecoder.html'
                                   title='iron_cms::middleware::BaseDataMapDecoder'>BaseDataMapDecoder</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>BaseDataMap Json decoder trait</p>
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='trait' href='trait.Decodable.html'
                                   title='iron_cms::middleware::Decodable'>Decodable</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='trait' href='trait.ToJson.html'
                                   title='iron_cms::middleware::ToJson'>ToJson</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>A trait for converting values to JSON</p>
                            </td>
                        </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                        <tr class=' module-item'>
+                           <td><a class='fn' href='fn.db.html'
+                                  title='iron_cms::middleware::db'>db</a></td>
+                           <td class='docblock-short'>
+                                <p>Create DB connection</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
                            <td><a class='fn' href='fn.template_render.html'
                                   title='iron_cms::middleware::template_render'>template_render</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Init Template renderer and add Tempaltes path.
 It invoke to after middleware</p>
                            </td>
@@ -147,21 +154,35 @@ It invoke to after middleware</p>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.BaseDataMap.html'
                                   title='iron_cms::middleware::BaseDataMap'>BaseDataMap</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Alias for Basic Data struct</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.ConnectionPool.html'
+                                  title='iron_cms::middleware::ConnectionPool'>ConnectionPool</a></td>
+                           <td class='docblock-short'>
+                                
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.ErrorsResult.html'
                                   title='iron_cms::middleware::ErrorsResult'>ErrorsResult</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.InsertResult.html'
+                                  title='iron_cms::middleware::InsertResult'>InsertResult</a></td>
+                           <td class='docblock-short'>
                                 
                            </td>
                        </tr>
                        <tr class=' module-item'>
                            <td><a class='type' href='type.RenderResult.html'
                                   title='iron_cms::middleware::RenderResult'>RenderResult</a></td>
-                           <td class='docblock short'>
+                           <td class='docblock-short'>
                                 <p>Alias for basic Iron Response Result</p>
                            </td>
                        </tr></table></section>
